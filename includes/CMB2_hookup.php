@@ -124,7 +124,11 @@ class CMB2_hookup extends CMB2_Hookup_Base {
 	}
 
 	public function term_hooks() {
-		if ( ! function_exists( 'get_term_meta' ) || ! $this->cmb->prop( 'taxonomies' ) ) {
+		if ( ! function_exists( 'get_term_meta' ) ) {
+			wp_die( __( 'Term Metadata is a WordPress > 4.4 feature. Please upgrade your WordPress install.', 'cmb2' ) );
+		}
+
+		if ( ! $this->cmb->prop( 'taxonomies' ) ) {
 			wp_die( __( 'Term metaboxes configuration requires a \'taxonomies\' parameter', 'cmb2' ) );
 		}
 
@@ -166,10 +170,11 @@ class CMB2_hookup extends CMB2_Hookup_Base {
 		// Only use minified files if SCRIPT_DEBUG is off
 		$min   = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		$front = is_admin() ? '' : '-front';
+		$rtl = is_rtl() ? '-rtl' : '';
 
 		// Filter required styles and register stylesheet
 		$styles = apply_filters( 'cmb2_style_dependencies', array() );
-		wp_register_style( 'cmb2-styles', cmb2_utils()->url( "css/cmb2{$front}{$min}.css" ), $styles );
+		wp_register_style( 'cmb2-styles', cmb2_utils()->url( "css/cmb2{$front}{$rtl}{$min}.css" ), $styles );
 
 		self::$css_registration_done = true;
 	}
