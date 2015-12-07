@@ -139,11 +139,7 @@ function yourprefix_register_demo_metabox() {
 		'desc' => __( 'field description (optional)', 'cmb2' ),
 		'id'   => $prefix . 'time',
 		'type' => 'text_time',
-		// 'attributes' => array(
-		// 	'data-timepicker' => json_encode( array(
-		// 		'timeFormat' => 'HH:mm',
-		// 	) ),
-		// ),
+		// 'time_format' => 'H:i', // Set to 24hr format
 	) );
 
 	$cmb_demo->add_field( array(
@@ -158,12 +154,7 @@ function yourprefix_register_demo_metabox() {
 		'desc' => __( 'field description (optional)', 'cmb2' ),
 		'id'   => $prefix . 'textdate',
 		'type' => 'text_date',
-		// 'attributes' => array(
-		// 	// CMB2 checks for datepicker override data here:
-		// 	'data-datepicker' => json_encode( array(
-		// 		'dateFormat' => 'yy-mm-dd', // override date format
-		// 	) ),
-		// ),
+		// 'date_format' => 'Y-m-d',
 	) );
 
 	$cmb_demo->add_field( array(
