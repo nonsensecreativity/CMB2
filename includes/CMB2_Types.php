@@ -427,7 +427,7 @@ class CMB2_Types {
 		) );
 
 		if ( ! empty( $a['js_dependencies'] ) ) {
-			CMB2_JS::add_dependencies( $a['js_dependencies'] );
+			$this->field->add_js_dependencies( $a['js_dependencies'] );
 		}
 
 		return sprintf( '<input%s/>%s', $this->concat_attrs( $a, array( 'desc', 'js_dependencies' ) ), $a['desc'] );

@@ -1008,6 +1008,19 @@ class CMB2_Field {
 	}
 
 	/**
+	 * Store JS dependencies as part of the field args.
+	 * @since 2.2.0
+	 * @param array $dependencies Dependies to register for this field.
+	 */
+	public function add_js_dependencies( $dependencies = array() ) {
+		foreach ( (array) $dependencies as $dependency ) {
+			$this->args['js_dependencies'][ $dependency ] = $dependency;
+		}
+
+		CMB2_JS::add_dependencies( $dependencies );
+	}
+
+	/**
 	 * Fills in empty field parameters with defaults
 	 * @since 1.1.0
 	 * @param array $args Metabox field config array
@@ -1039,6 +1052,7 @@ class CMB2_Field {
 			'render_row_cb'     => array( $this, 'render_field_callback' ),
 			'label_cb'          => 'title' != $args['type'] ? array( $this, 'label' ) : '',
 			'show_in_rest'      => null,
+			'js_dependencies'   => array(),
 		) );
 
 		// Allow a filter override of the default value
