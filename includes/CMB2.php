@@ -75,12 +75,12 @@ class CMB2 {
 		'enqueue_js'       => true, // Include CMB2 JS
 		'fields'           => array(),
 		'hookup'           => true,
-		'show_in_rest'     => false,
 		'save_fields'      => true, // Will not save during hookup if false
 		'closed'           => false, // Default to metabox being closed?
 		'taxonomies'       => array(),
 		'new_user_section' => 'add-new-user', // or 'add-existing-user'
 		'new_term_section' => true,
+		'show_in_rest'     => false,
 		'rest_read'        => false,
 		'rest_write'       => false,
 	);
@@ -176,9 +176,9 @@ class CMB2 {
 		$object_type = $this->object_type( $object_type );
 		$object_id = $this->object_id( $object_id );
 
-		$this->nonce_field();
-
 		echo "\n<!-- Begin CMB2 Fields -->\n";
+
+		$this->nonce_field();
 
 		/**
 		 * Hook before form table begins
